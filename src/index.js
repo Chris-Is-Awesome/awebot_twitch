@@ -24,6 +24,14 @@ client.on('connected', (address, port) => {
 });
 
 client.on('chat', (channel, user, message, self) => {
+
+	/* TODO
+		- Make command manager
+		- !friend command to return random video game (or movie/tv char?) as your best friend :)
+		- Mod commands (!title, !game, etc.)
+	*/
+
+	// Whoop command
 	if (message === '!whoop') {
 		const rngIn = Math.random();
 
