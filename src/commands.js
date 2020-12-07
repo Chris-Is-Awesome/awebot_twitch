@@ -2,8 +2,11 @@ module.exports = {
 	getCommandOutput
 }
 
+const fetch = require('node-fetch');
+//const clientID = '9280shiyoymeok02jptkzl5snjl72s';
+const username = 'chrisisawesome';
 const prefix = '!';
-const commandList = [ "whoop", "goat", "bff", "friend", "love" ];
+const commandList = [ "whoop", "goat", "bff", "friend", "love", "title" ];
 const friends = {
 	"The Legend of Zelda": new Array("the Old Man", "Aquamentus", "Dodongo", "Manhandla", "Gleeok", "Digdogger", "Gohma", "Ganon", "Impa", "Zelda", "the Great Fairy", "Link"),
 	"The Legend of Zelda II: The Adventure of Link": new Array("Horsehead", "Jermafenser", "Rebonack", "Carock", "Gooma", "Barba", "Thunderbird", "Link's Shadow", "impa", "the King of Hyrule", "Link", "Zelda"),
@@ -51,6 +54,8 @@ function getCommandOutput(user, message) {
 				return DoFriend(user);
 			case "love":
 				return DoLove(user);
+			case "title":
+				return GetTitle();
 		}
 	}
 }
@@ -69,6 +74,31 @@ function isCommand(message) {
 }
 
 // Code for each command goes below here...
+
+async function GetTitle() {
+	const response = await GetChannelData();
+	if (response.data[0].display_name === 'chrisisawesome') {
+		console.log("Title is: " + response.data[0].title); // NOTE: RETURNS PROMISE, NOT STRING!
+	}
+}
+
+async function GetChannelData() {
+	const url = `https://api.twitch.tv/helix/search/channels?query=${username}`;
+
+	var options = {
+		'method': 'GET',
+		'url': url,
+		'headers': {
+			'client-id': '9280shiyoymeok02jptkzl5snjl72s',
+			'authorization': 'Bearer os86eowen5qj90jiolb0m8eddtffdk'
+		}
+	};
+
+	const reponse = await fetch(url, options)
+		.then (response => response.json());
+
+	return reponse;
+}
 
 function DoWhoop(user) {
 	const outputs = [

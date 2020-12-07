@@ -18,6 +18,7 @@ const commands = require('./commands.js');
 
 client.connect();
 const myUser = 'chrisisawesome';
+const channelID = '9280shiyoymeok02jptkzl5snjl72s';
 
 // On connection
 client.on('connected', (address, port) => {
@@ -31,6 +32,7 @@ client.on('chat', (channel, user, message, self) => {
 	if (!self) {
 		// Run command & get return message to output
 		const output = commands.getCommandOutput(user, message);
+		console.log("Output: " + output);
 
 		// Output message if given, otherwise do nothing
 		if (typeof output === 'string' && output.length > 0) {

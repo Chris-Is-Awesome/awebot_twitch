@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Chris-Is-Awesome/awebot_twitch#readme",
   "dependencies": {
-    "tmi.js": "^1.5.0"
+    "node-fetch": "^2.6.1",
+    "tmi.js": "^1.5.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }
