@@ -18,7 +18,7 @@ const commands = require('./commands.js');
 
 client.connect();
 const myUser = 'chrisisawesome';
-const channelID = '9280shiyoymeok02jptkzl5snjl72s';
+const channelID = process.env.CHANNEL_ID;
 
 // On connection
 client.on('connected', (address, port) => {
